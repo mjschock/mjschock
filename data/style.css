@@ -1,0 +1,32 @@
+html {
+    font-size: 10px;
+}
+
+h1 {
+    font-size: 16px;
+}
+
+h2 {
+    font-size: 14px;
+}
+
+h3 {
+    font-size: 12px;
+}
+
+table {
+    border-spacing: 0;
+    width: 100%;
+}
+
+th {
+    font-size: 12px;
+}
+
+td:nth-child(even), th:nth-child(even) {
+    text-align: right;
+}
+
+ul {
+    text-align: justify;
+}
