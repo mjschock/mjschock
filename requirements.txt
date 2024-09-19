@@ -5,6 +5,7 @@ httptools==0.6.1
 isoduration==20.11.0
 jsonpointer==3.0.0
 jupyter==1.0.0
+nbconvert[webpdf]==7.16.4
 openai==1.35.7
 orjson==3.10.6
 python-dotenv==1.0.1

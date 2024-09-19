@@ -145,7 +145,7 @@ keywords: [artificial intelligence, machine learning, software engineering]
   </tr>
 </table>
 
-- Specialization in Machine Learning
+- Specialization in Computational Perception and Robotics
 
 <table>
   <tr>
@@ -163,13 +163,21 @@ keywords: [artificial intelligence, machine learning, software engineering]
 
 <table>
   <tr>
+    <td>CS 7650: Natural Language Processing (Georgia Tech)</td>
+    <td>Fall 2024</td>
+  </tr>
+  <tr>
+    <td>
+      Pretraining LLMs (DeepLearning.AI: <a href="https://learn.deeplearning.ai/accomplishments/acd62d79-7905-4e8c-938e-3a9baa7fa37d?usp=sharing">acd62d79-7905-4e8c-938e-3a9baa7fa37d</a>)</td>
+    <td>Sep. 2024</td>
+  </tr>
+  <tr>
     <td>AI Agentic Design Patterns with AutoGen (DeepLearning.AI; <a href="https://learn.deeplearning.ai/accomplishments/aaa82f56-f1b7-4fa5-8294-b2d361bd3f9a?usp=sharing">aaa82f56-f1b7-4fa5-8294-b2d361bd3f9a</a>)</td>
     <td>Jul. 2024</td>
   </tr>
   <tr>
     <td>Generative AI Nanodegree (Udacity; <a href="https://confirm.udacity.com/e/90eec41a-ba24-11ee-b074-e35f0b9acf2c">90eec41a-ba24-11ee-b074-e35f0b9acf2c</a>)</td>
-    <td>May 2024</a>
-    </td>
+    <td>May 2024</td>
   </tr>
   <tr>
     <td>Multi AI Agent Systems with crewAI (DeepLearning.AI; <a href="https://learn.deeplearning.ai/accomplishments/f047b2d3-69e8-4fbd-82df-27bf72dbf770?usp=sharing">f047b2d3-69e8-4fbd-82df-27bf72dbf770</a>)</td>
