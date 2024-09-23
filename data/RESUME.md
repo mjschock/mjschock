@@ -167,8 +167,11 @@ keywords: [artificial intelligence, machine learning, software engineering]
     <td>Fall 2024</td>
   </tr>
   <tr>
-    <td>
-      Pretraining LLMs (DeepLearning.AI: <a href="https://learn.deeplearning.ai/accomplishments/acd62d79-7905-4e8c-938e-3a9baa7fa37d?usp=sharing">acd62d79-7905-4e8c-938e-3a9baa7fa37d</a>)</td>
+    <td>Function-calling and data extraction with LLMs (DeepLearning.AI; <a href="https://learn.deeplearning.ai/accomplishments/bc94b773-a3a7-4405-928f-e24d138db517?usp=sharing">bc94b773-a3a7-4405-928f-e24d138db517</a>)</td>
+    <td>Sep. 2024</td>
+  </tr>
+  <tr>
+    <td>Pretraining LLMs (DeepLearning.AI; <a href="https://learn.deeplearning.ai/accomplishments/acd62d79-7905-4e8c-938e-3a9baa7fa37d?usp=sharing">acd62d79-7905-4e8c-938e-3a9baa7fa37d</a>)</td>
     <td>Sep. 2024</td>
   </tr>
   <tr>
