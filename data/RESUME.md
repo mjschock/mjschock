@@ -167,6 +167,10 @@ keywords: [artificial intelligence, machine learning, software engineering]
     <td>Fall 2024</td>
   </tr>
   <tr>
+    <td>AI Agents in LangGraph (DeepLearning.AI; <a href="https://learn.deeplearning.ai/accomplishments/0d74827b-6eea-4192-a91b-0531fa1b4cc3?usp=sharing">0d74827b-6eea-4192-a91b-0531fa1b4cc3</a>)</td>
+    <td>Sep. 2024</td>
+  </tr>
+  <tr>
     <td>Function-calling and data extraction with LLMs (DeepLearning.AI; <a href="https://learn.deeplearning.ai/accomplishments/bc94b773-a3a7-4405-928f-e24d138db517?usp=sharing">bc94b773-a3a7-4405-928f-e24d138db517</a>)</td>
     <td>Sep. 2024</td>
   </tr>
