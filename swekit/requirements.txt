@@ -2,5 +2,6 @@ composio-core
 composio-crewai
 composio-langgraph
 crewai
+gpt4all
 langchain-anthropic
 swekit

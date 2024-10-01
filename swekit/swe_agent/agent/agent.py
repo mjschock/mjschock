@@ -3,29 +3,54 @@
 import os
 
 import dotenv
-from crewai import Agent, Crew, Process, Task
-from langchain_anthropic import ChatAnthropic
-from custom_tools import say
-from langchain_openai import ChatOpenAI
-from prompts import BACKSTORY, DESCRIPTION, EXPECTED_OUTPUT, GOAL, ROLE
-
 from composio_crewai import Action, App, ComposioToolSet, WorkspaceType
+from crewai import Agent, Crew, LLM, Process, Task
+from langchain_openai import ChatOpenAI
 
+from custom_tools import say
+from prompts import BACKSTORY, DESCRIPTION, EXPECTED_OUTPUT, GOAL, ROLE
 
 # Load environment variables from .env
 dotenv.load_dotenv()
 
-# Initialize tool.
-anthropic_client = ChatAnthropic(
-    # https://docs.litellm.ai/docs/providers/anthropic
-    api_key=os.environ["ANTHROPIC_API_KEY"],  # type: ignore
-    max_tokens=4096,
-    model="claude-3-sonnet-20240229",
-)
-openai_client = ChatOpenAI(
-    api_key=os.environ["OPENAI_API_KEY"],  # type: ignore
-    model="gpt-4-1106-preview",
-)
+# provider = "anthropic"
+# provider = "github"
+provider = "ollama"
+# provider = "openai"
+
+embedder = {
+    "provider": "gpt4all",
+    "config": {
+        # "model": "all-MiniLM-L6-v2-f16.gguf",
+        "model": "all-MiniLM-L6-v2.gguf2.f16.gguf",
+    }
+}
+
+if provider == "anthropic":
+    llm = LLM(
+        api_key=os.environ["ANTHROPIC_API_KEY"],
+        model="claude-3-sonnet-20240229",
+    )
+
+elif provider == "ollama":
+    llm = LLM(
+        base_url="http://localhost:11434",
+        model="ollama/llama3.2:1b",
+    )
+
+elif provider == "openai":
+    embedder = {
+        "provider": "openai",
+        "config": {
+            "model": 'text-embedding-3-small'
+        }
+    }
+    llm = ChatOpenAI(
+        api_key=os.environ["OPENAI_API_KEY"],
+        # model="gpt-4-1106-preview",
+        model="gpt-3.5-turbo",
+    )
+
 composio_toolset = ComposioToolSet(workspace_config=WorkspaceType.Docker())
 
 # Get required tools
@@ -51,26 +76,28 @@ tools = [
 
 # Define agent
 agent = Agent(
-    role=ROLE,
-    goal=GOAL,
     backstory=BACKSTORY,
-    llm=anthropic_client,
-    # llm=openai_client,
+    goal=GOAL,
+    # function_calling_llm=llm,
+    llm=llm,
+    role=ROLE,
     tools=tools,
     verbose=True,
 )
 
 task = Task(
+    agent=agent,
     description=DESCRIPTION,
     expected_output=EXPECTED_OUTPUT,
-    agent=agent,
 )
 
 crew = Crew(
     agents=[agent],
-    tasks=[task],
-    process=Process.sequential,
-    verbose=True,
     cache=False,
+    embedder=embedder,
+    # manager_llm=llm,
     memory=True,
+    process=Process.sequential,
+    tasks=[task],
+    verbose=True,
 )
