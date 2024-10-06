@@ -7,5 +7,9 @@ gpt4all
 llama-stack-client
 langchain-anthropic
 langchain-ollama
+langgraph
+langgraph-checkpoint
+langgraph-checkpoint-postgres
+langgraph-checkpoint-sqlite
 # pygraphviz
 swekit

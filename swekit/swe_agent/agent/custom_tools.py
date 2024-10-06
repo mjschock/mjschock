@@ -24,7 +24,7 @@ def get_weather(location: str) -> str:
     """
     import requests
 
-    print(f"Getting weather for {location}")
+    # print(f"Getting weather for {location}")
 
     response = requests.get(f"https://wttr.in/{location}?format=%C+%t")
     return response.text
