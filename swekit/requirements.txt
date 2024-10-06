@@ -11,5 +11,6 @@ langgraph
 langgraph-checkpoint
 langgraph-checkpoint-postgres
 langgraph-checkpoint-sqlite
+pandas
 # pygraphviz
 swekit

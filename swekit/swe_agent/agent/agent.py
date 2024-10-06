@@ -1,4 +1,4 @@
-"""LangGraph SWE Agent"""
+"""Composio-LangGraph SWE Agent"""
 
 import operator
 from typing import List, TypedDict
@@ -58,6 +58,7 @@ tools: List[ChatCompletionToolParam] = [
         type=tool.get("type", "function"),
     ) for tool in tools
 ]
+
 
 class AgentState(TypedDict):
     messages: Annotated[list[ChatCompletionMessageParam], operator.add]
