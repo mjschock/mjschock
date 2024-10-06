@@ -13,3 +13,18 @@ def say(message: str) -> str:
     import cowsay
 
     return cowsay.get_output_string("cow", message)
+
+@action(toolname="get_weather", requires=["requests"])
+def get_weather(location: str) -> str:
+    """
+    Get the current weather for a location.
+
+    :param location: The location to get the weather for.
+    :return weather: The current weather for the location.
+    """
+    import requests
+
+    print(f"Getting weather for {location}")
+
+    response = requests.get(f"https://wttr.in/{location}?format=%C+%t")
+    return response.text

@@ -1,7 +1,11 @@
 composio-core
 composio-crewai
 composio-langgraph
+composio-openai
 crewai
 gpt4all
+llama-stack-client
 langchain-anthropic
+langchain-ollama
+# pygraphviz
 swekit

@@ -67,3 +67,11 @@ Example: in case error is "pandas not found", install pandas like this `pip inst
 """
 
 EXPECTED_OUTPUT = "A patch should be generated which fixes the given issue and a PR should be created"
+
+SYSTEM_PROMPT = """You are a helpful AI assistant.
+
+You have access to a workspace with a cloned git repository. You can use the following tools:
+
+{tools}"""
+
+# System time: {system_time}"""
