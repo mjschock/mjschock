@@ -51,8 +51,8 @@ tools = [
             get_weather,
         ],
         # apps=[
-            # App.FILETOOL,
-            # App.SHELLTOOL,
+        # App.FILETOOL,
+        # App.SHELLTOOL,
         # ]
     ),
     # *composio_toolset.get_actions(

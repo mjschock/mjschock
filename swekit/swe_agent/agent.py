@@ -4,17 +4,17 @@ import operator
 from typing import TypedDict
 
 import dotenv
-from custom_tools import composio_toolset
 from langgraph.graph import END, StateGraph
 from openai import OpenAI
-from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
-from openai.types.chat.chat_completion_system_message_param import (
-    ChatCompletionSystemMessageParam,
-)
-from openai.types.chat.chat_completion_tool_message_param import (
-    ChatCompletionToolMessageParam,
-)
+from openai.types.chat.chat_completion_message_param import \
+    ChatCompletionMessageParam
+from openai.types.chat.chat_completion_system_message_param import \
+    ChatCompletionSystemMessageParam
+from openai.types.chat.chat_completion_tool_message_param import \
+    ChatCompletionToolMessageParam
 from typing_extensions import Annotated
+
+from swe_agent.tools import composio_toolset
 
 # Load environment variables from .env
 dotenv.load_dotenv()
@@ -25,32 +25,20 @@ class Environment:
         self.composio_toolset = composio_toolset
 
     def step(self, actions):
-        # latest_message = state['messages'][-1]
-        # latest_message_tool_calls = latest_message.tool_calls
-
         results = []
 
-        # for tool_call in latest_message_tool_calls:
         for tool_call in actions:
-            results.append(
-                composio_toolset.execute_tool_call(
+            try:
+                result = composio_toolset.execute_tool_call(
                     tool_call=tool_call,
                     entity_id=composio_toolset.entity_id,
                 )
-            )
 
-        # chat_completion_tool_messages = [
-        #     ChatCompletionToolMessageParam(
-        #         content=str(result),
-        #         role="tool", # TODO: different role?
-        #         tool_call_id=tool_call.id,
-        #     # ) for tool_call, result in zip(latest_message_tool_calls, results)
-        #     ) for tool_call, result in zip(actions, results)
-        # ]
+            except Exception as e:
+                result = str(e)
 
-        # return {'messages': chat_completion_tool_messages}
+            results.append(result)
 
-        # return results
         observations = results
         rewards = [0] * len(results)
         terminations = [False] * len(results)
@@ -79,8 +67,7 @@ class Agent:
         graph.add_edge("action", "llm")
         graph.set_entry_point("llm")
 
-        # self.graph = graph.compile(checkpointer=checkpointer)
-        self.graph = graph.compile()
+        self.graph = graph.compile(checkpointer=checkpointer)
         self.model = model
         self.tools = tools
         self.system_prompt = system_prompt
@@ -125,17 +112,6 @@ class Agent:
         latest_message = state["messages"][-1]
         latest_message_tool_calls = latest_message.tool_calls
 
-        # results = []
-
-        # for tool_call in latest_message_tool_calls:
-        #     results.append(
-        #         composio_toolset.execute_tool_call(
-        #             tool_call=tool_call,
-        #             entity_id=composio_toolset.entity_id,
-        #         )
-        #     )
-
-        # results = env.step(actions=latest_message_tool_calls)
         observations, rewards, terminations, truncations, infos = env.step(
             actions=latest_message_tool_calls
         )
@@ -145,7 +121,6 @@ class Agent:
                 content=str(result),
                 role="tool",  # TODO: different role?
                 tool_call_id=tool_call.id,
-                # ) for tool_call, result in zip(latest_message_tool_calls, results)
             )
             for tool_call, result in zip(latest_message_tool_calls, observations)
         ]
