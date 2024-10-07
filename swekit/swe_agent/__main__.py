@@ -44,8 +44,6 @@ async def main(thread_id: str = "1") -> None:
 
         thread = {"configurable": {"thread_id": thread_id}}
 
-        # chunk_count = 0
-
         messages = [
             ChatCompletionSystemMessageParam(
                 content=system_prompt,
@@ -65,6 +63,30 @@ async def main(thread_id: str = "1") -> None:
                 # print(v["messages"])
                 pretty_print_conversation(v["messages"])
 
+
+        while (await agent.graph.aget_state(thread)).next:
+            print("\n", (await agent.graph.aget_state(thread)).next,"\n")
+            # _input = input("proceed? [modify, y, n]: ")
+            _input = input("proceed? [modify, no, yes]: ")
+
+            # if _input != "y":
+            #     print("aborting")
+            #     break
+
+            if _input in ("m", "modify"):
+                print("modifying...")
+                # TODO: https://github.com/mjschock/deeplearning-ai/blob/main/ai-agents-in-langgraph/L5/Lesson_5_Student.ipynb
+                raise NotImplementedError("The modify option is not yet implemented.")
+
+            elif _input in ("n", "no"):
+                print("aborting...")
+                break
+
+            # for event in abot.graph.stream(None, thread):
+            async for event in agent.graph.astream(None, thread):
+                for v in event.values():
+                    # print(v)
+                    pretty_print_conversation(v["messages"])
 
 def generate_system_prompt():
     return """You are a helpful AI assistant.
