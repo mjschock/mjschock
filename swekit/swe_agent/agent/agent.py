@@ -1,63 +1,63 @@
 """Composio-LangGraph SWE Agent"""
 
 import operator
-from typing import List, TypedDict
+from typing import TypedDict
 from typing_extensions import Annotated
 
 import dotenv
-from composio_openai import ComposioToolSet, WorkspaceType
-from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
-from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph import END, StateGraph
 from openai import OpenAI
-from openai.types.chat import ChatCompletion
-from openai.types.chat import ChatCompletionToolParam
-from openai.types.shared_params import FunctionDefinition
 from openai.types.chat.chat_completion_tool_message_param import ChatCompletionToolMessageParam
 from openai.types.chat.chat_completion_system_message_param import ChatCompletionSystemMessageParam
 from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
 
-from custom_tools import get_weather
+from custom_tools import composio_toolset
 
 # Load environment variables from .env
 dotenv.load_dotenv()
 
-# composio_toolset = ComposioToolSet(workspace_config=WorkspaceType.Docker())
-composio_toolset = ComposioToolSet(workspace_config=WorkspaceType.Host())
 
-# Get required tools
-tools = [
-    # *composio_toolset.get_tools(
-    #     actions=[
-    #         Action.GITHUB_CREATE_A_PULL_REQUEST,
-    #         Action.TWITTER_USER_LOOKUP_ME,
-    #         Action.WEBTOOL_SCRAPE_WEBSITE_CONTENT,
-    #     ],
-    #     apps=[
-    #         App.FILETOOL,
-    #         App.SHELLTOOL,
-    #     ]
-    # ),
-    *composio_toolset.get_actions(
-        actions=[
-            get_weather,
-            # say,  # This is just here as an example of a custom tool, you can remove it
-            # Action.GITHUB_CREATE_A_PULL_REQUEST
-        ]
-    ),
-]
+class Environment:
+    def __init__(self, composio_toolset):
+        self.composio_toolset = composio_toolset
 
-tools: List[ChatCompletionToolParam] = [
-    ChatCompletionToolParam(
-        function=FunctionDefinition(
-            name=tool.get("function").get("name"),
-            description=tool.get("function").get("description"),
-            parameters=tool.get("function").get("parameters"),
-            # strict=False,
-        ),
-        type=tool.get("type", "function"),
-    ) for tool in tools
-]
+    def step(self, actions):
+        # latest_message = state['messages'][-1]
+        # latest_message_tool_calls = latest_message.tool_calls
+
+        results = []
+
+        # for tool_call in latest_message_tool_calls:
+        for tool_call in actions:
+            results.append(
+                composio_toolset.execute_tool_call(
+                    tool_call=tool_call,
+                    entity_id=composio_toolset.entity_id,
+                )
+            )
+
+        # chat_completion_tool_messages = [
+        #     ChatCompletionToolMessageParam(
+        #         content=str(result),
+        #         role="tool", # TODO: different role?
+        #         tool_call_id=tool_call.id,
+        #     # ) for tool_call, result in zip(latest_message_tool_calls, results)
+        #     ) for tool_call, result in zip(actions, results)
+        # ]
+
+        # return {'messages': chat_completion_tool_messages}
+
+        # return results
+        observations = results
+        rewards = [0] * len(results)
+        terminations = [False] * len(results)
+        truncations = [False] * len(results)
+        infos = [{}] * len(results)
+
+        return observations, rewards, terminations, truncations, infos
+
+
+env = Environment(composio_toolset)
 
 
 class AgentState(TypedDict):
@@ -111,7 +111,7 @@ class Agent:
             messages=messages,
             model="llama3.2:1b",
             temperature=0,
-            tools=tools,
+            tools=self.tools,
         )
 
         message = response.choices[0].message
@@ -124,22 +124,26 @@ class Agent:
         latest_message = state['messages'][-1]
         latest_message_tool_calls = latest_message.tool_calls
 
-        results = []
+        # results = []
 
-        for tool_call in latest_message_tool_calls:
-            results.append(
-                composio_toolset.execute_tool_call(
-                    tool_call=tool_call,
-                    entity_id=composio_toolset.entity_id,
-                )
-            )
+        # for tool_call in latest_message_tool_calls:
+        #     results.append(
+        #         composio_toolset.execute_tool_call(
+        #             tool_call=tool_call,
+        #             entity_id=composio_toolset.entity_id,
+        #         )
+        #     )
+
+        # results = env.step(actions=latest_message_tool_calls)
+        observations, rewards, terminations, truncations, infos = env.step(actions=latest_message_tool_calls)
 
         chat_completion_tool_messages = [
             ChatCompletionToolMessageParam(
                 content=str(result),
                 role="tool", # TODO: different role?
                 tool_call_id=tool_call.id,
-            ) for tool_call, result in zip(latest_message_tool_calls, results)
+            # ) for tool_call, result in zip(latest_message_tool_calls, results)
+            ) for tool_call, result in zip(latest_message_tool_calls, observations)
         ]
 
         return {'messages': chat_completion_tool_messages}
