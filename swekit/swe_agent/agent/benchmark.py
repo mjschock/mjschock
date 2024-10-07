@@ -1,7 +1,6 @@
 import argparse
 
 from agent import composio_toolset, crew
-
 from swekit.benchmark.run_evaluation import evaluate
 from swekit.config.store import IssueConfig
 

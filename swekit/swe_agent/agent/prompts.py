@@ -66,7 +66,9 @@ If you are facing "module not found error", you can install dependencies.
 Example: in case error is "pandas not found", install pandas like this `pip install pandas`
 """
 
-EXPECTED_OUTPUT = "A patch should be generated which fixes the given issue and a PR should be created"
+EXPECTED_OUTPUT = (
+    "A patch should be generated which fixes the given issue and a PR should be created"
+)
 
 SYSTEM_PROMPT = """You are a helpful AI assistant.
 
@@ -75,3 +77,84 @@ You have access to a workspace with a cloned git repository. You can use the fol
 {tools}"""
 
 # System time: {system_time}"""
+
+
+def get_system_prompt(tools: str) -> str:
+    # https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/text_prompt_format.md#zero-shot-function-calling-e2e-format
+    prompt = f"""You are an expert in composing functions. You are given a question and a set of possible functions.
+  Based on the question, you will need to make one or more function/tool calls to achieve the purpose.
+  If none of the function can be used, point it out. If the given question lacks the parameters required by the function,
+  also point it out. You should only return the function call in tools call sections.
+
+  If you decide to invoke any of the function(s), you MUST put it in the format of [func_name1(params_name1=params_value1, params_name2=params_value2...), func_name2(params)]
+  You SHOULD NOT include any other text in the response.
+
+  Here is a list of functions in JSON format that you can invoke:\n\n"""
+
+    prompt += "[\n"
+
+    for i, tool in enumerate(tools):
+        prompt += "    {\n"
+
+        prompt += f'        "name": "{tool.get("function").get("name")}",\n'
+        prompt += (
+            f'        "description": "{tool.get("function").get("description")}",\n'
+        )
+
+        prompt += '        "parameters": {\n'
+
+        prompt += '            "type": "dict",\n'  # TODO: object from field?
+        prompt += '            "required": [\n'
+
+        for j, parameter in enumerate(
+            tool.get("function").get("parameters").get("required", [])
+        ):
+            prompt += f'                "{parameter}"'
+
+            if j < len(tool.get("function").get("parameters").get("required")) - 1:
+                prompt += ","
+
+            prompt += "\n"
+
+        prompt += "            ],\n"
+
+        prompt += '            "properties": {\n'
+
+        for j, parameter in enumerate(
+            tool.get("function").get("parameters").get("properties", [])
+        ):
+            prompt += f'                "{parameter}": ' + "{\n"
+
+            prompt += f'                    "type": "{tool.get("function").get("parameters").get("properties").get(parameter).get("type")}",\n'
+            prompt += f'                    "description": "{tool.get("function").get("parameters").get("properties").get(parameter).get("description")}"'
+
+            if "default" in tool.get("function").get("parameters").get(
+                "properties"
+            ).get(parameter):
+                prompt += ",\n"
+                prompt += f'                    "default": "{tool.get("function").get("parameters").get("properties").get(parameter).get("default")}"\n'
+
+            else:
+                prompt += "\n"
+
+            prompt += "                }"
+
+            if j < len(tool.get("function").get("parameters").get("properties")) - 1:
+                prompt += ","
+
+            prompt += "\n"
+
+        prompt += "            }\n"
+
+        prompt += "        },\n"
+
+        prompt += "    }"
+
+        if i < len(tools) - 1:
+            prompt += ","
+
+        prompt += "\n"
+
+    prompt += "]\n"
+
+    return prompt

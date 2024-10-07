@@ -5,7 +5,6 @@ from pathlib import Path
 from agent import composio_toolset
 from composio import Action
 
-
 InputType = t.TypeVar("InputType")
 
 
@@ -50,9 +49,11 @@ def _create_github_issue_validator(owner: str, name: str) -> t.Callable[[str], s
                     "issue_number": int(value),
                 },
             ).get("data")
-            return response_data["body"]
 
-        return value
+            return value, response_data["body"]
+
+        raise ValueError()
+        # return value
 
     return _github_issue_validator
 
@@ -64,15 +65,19 @@ def from_github() -> t.Tuple[str, str]:
         metavar="github repository name",
         validator=_github_repository_name_validator,
     )
+
+    issue_id, issue_content = read_user_input(
+        # prompt="Enter github issue ID or description or path to the file containing description",
+        prompt="Enter github issue ID",
+        metavar="github issue",
+        validator=_create_github_issue_validator(
+            owner=owner,
+            name=name,
+        ),
+    )
+
     return (
         f"{owner}/{name}",
-        read_user_input(
-            # prompt="Enter github issue ID or description or path to the file containing description",
-            prompt="Enter github issue ID",
-            metavar="github issue",
-            validator=_create_github_issue_validator(
-                owner=owner,
-                name=name,
-            ),
-        ),
+        issue_id,
+        issue_content,
     )

@@ -2,16 +2,19 @@
 
 import operator
 from typing import TypedDict
-from typing_extensions import Annotated
 
 import dotenv
+from custom_tools import composio_toolset
 from langgraph.graph import END, StateGraph
 from openai import OpenAI
-from openai.types.chat.chat_completion_tool_message_param import ChatCompletionToolMessageParam
-from openai.types.chat.chat_completion_system_message_param import ChatCompletionSystemMessageParam
 from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
-
-from custom_tools import composio_toolset
+from openai.types.chat.chat_completion_system_message_param import (
+    ChatCompletionSystemMessageParam,
+)
+from openai.types.chat.chat_completion_tool_message_param import (
+    ChatCompletionToolMessageParam,
+)
+from typing_extensions import Annotated
 
 # Load environment variables from .env
 dotenv.load_dotenv()
@@ -71,9 +74,7 @@ class Agent:
         graph.add_node("llm", self.step)
         graph.add_node("action", self.take_action)
         graph.add_conditional_edges(
-            "llm",
-            self.exists_action,
-            {True: "action", False: END}
+            "llm", self.exists_action, {True: "action", False: END}
         )
         graph.add_edge("action", "llm")
         graph.set_entry_point("llm")
@@ -85,7 +86,7 @@ class Agent:
         self.system_prompt = system_prompt
 
     def exists_action(self, state: AgentState):
-        result = state['messages'][-1]
+        result = state["messages"][-1]
 
         if result.tool_calls:
             return True
@@ -93,18 +94,18 @@ class Agent:
         return False
 
     def step(self, state: AgentState):
-        messages = state['messages']
+        messages = state["messages"]
 
         if self.system_prompt:
             messages = [
                 ChatCompletionSystemMessageParam(
-                    content=self.system_prompt, 
-                    role="system"),
+                    content=self.system_prompt, role="system"
+                ),
             ] + messages
 
         client = OpenAI(
-            api_key='ollama',
-            base_url = 'http://localhost:11434/v1',
+            api_key="ollama",
+            base_url="http://localhost:11434/v1",
         )
 
         response = client.chat.completions.create(
@@ -117,11 +118,11 @@ class Agent:
         message = response.choices[0].message
 
         return {
-            'messages': [message],
+            "messages": [message],
         }
 
     def take_action(self, state: AgentState):
-        latest_message = state['messages'][-1]
+        latest_message = state["messages"][-1]
         latest_message_tool_calls = latest_message.tool_calls
 
         # results = []
@@ -135,15 +136,18 @@ class Agent:
         #     )
 
         # results = env.step(actions=latest_message_tool_calls)
-        observations, rewards, terminations, truncations, infos = env.step(actions=latest_message_tool_calls)
+        observations, rewards, terminations, truncations, infos = env.step(
+            actions=latest_message_tool_calls
+        )
 
         chat_completion_tool_messages = [
             ChatCompletionToolMessageParam(
                 content=str(result),
-                role="tool", # TODO: different role?
+                role="tool",  # TODO: different role?
                 tool_call_id=tool_call.id,
-            # ) for tool_call, result in zip(latest_message_tool_calls, results)
-            ) for tool_call, result in zip(latest_message_tool_calls, observations)
+                # ) for tool_call, result in zip(latest_message_tool_calls, results)
+            )
+            for tool_call, result in zip(latest_message_tool_calls, observations)
         ]
 
-        return {'messages': chat_completion_tool_messages}
+        return {"messages": chat_completion_tool_messages}

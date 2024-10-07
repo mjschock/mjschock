@@ -1,9 +1,11 @@
+black
 composio-core
 composio-crewai
 composio-langgraph
 composio-openai
 crewai
 gpt4all
+isort
 llama-stack-client
 langchain-anthropic
 langchain-ollama
