@@ -1,17 +1,21 @@
 import asyncio
+import json
 import sqlite3
-from pprint import pprint
+from pprint import pformat, pprint
 
 # from agent import Agent
 import aiosqlite
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
-from openai.types.chat.chat_completion_assistant_message_param import \
-    ChatCompletionAssistantMessageParam
-from openai.types.chat.chat_completion_system_message_param import \
-    ChatCompletionSystemMessageParam
-from openai.types.chat.chat_completion_user_message_param import \
-    ChatCompletionUserMessageParam
+from openai.types.chat.chat_completion_assistant_message_param import (
+    ChatCompletionAssistantMessageParam,
+)
+from openai.types.chat.chat_completion_system_message_param import (
+    ChatCompletionSystemMessageParam,
+)
+from openai.types.chat.chat_completion_user_message_param import (
+    ChatCompletionUserMessageParam,
+)
 from termcolor import colored
 
 from swe_agent.agent import Agent
@@ -49,13 +53,29 @@ async def main(thread_id: str = "1") -> None:
                 content=system_prompt,
                 role="system",
             ),
-            ChatCompletionUserMessageParam(
-                content=f"What's the weather like today in Oakland, CA?",
-                role="user",
+            ChatCompletionAssistantMessageParam(
+                content="Hello! How can I help you today?",
+                role="assistant",
             ),
+            # ChatCompletionUserMessageParam(
+            #     content=f"What's the weather like today in Oakland, CA?",
+            #     role="user",
+            # ),
         ]
 
         pretty_print_conversation(messages)
+
+        user_input = input("user:\n\n")
+        print("")
+
+        messages.append(
+            ChatCompletionUserMessageParam(
+                content=user_input,
+                role="user",
+            )
+        )
+
+        # pretty_print_conversation(messages[-1:])
 
         # for event in agent.graph.stream({"messages": messages}, thread):
         async for event in agent.graph.astream({"messages": messages}, thread):
@@ -63,9 +83,8 @@ async def main(thread_id: str = "1") -> None:
                 # print(v["messages"])
                 pretty_print_conversation(v["messages"])
 
-
         while (await agent.graph.aget_state(thread)).next:
-            print("\n", (await agent.graph.aget_state(thread)).next,"\n")
+            print("\n", (await agent.graph.aget_state(thread)).next, "\n")
             # _input = input("proceed? [modify, y, n]: ")
             _input = input("proceed? [modify, no, yes]: ")
 
@@ -82,43 +101,61 @@ async def main(thread_id: str = "1") -> None:
                 print("aborting...")
                 break
 
+            print("")
+
             # for event in abot.graph.stream(None, thread):
             async for event in agent.graph.astream(None, thread):
                 for v in event.values():
                     # print(v)
                     pretty_print_conversation(v["messages"])
 
-def generate_system_prompt():
-    return """You are a helpful AI assistant.
 
-You have access to a workspace with a cloned git repository. You can use the following tools:
+def generate_system_prompt():
+    # https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/text_prompt_format.md#zero-shot-function-calling
+    return """You are an expert in composing functions. You are given a question and a set of possible functions.
+Based on the question, you will need to make one or more function/tool calls to achieve the purpose.
+If none of the function can be used, point it out. If the given question lacks the parameters required by the function,
+also point it out. You should only return the function call in tools call sections.
+
+If you decide to invoke any of the function(s), you MUST put it in the format of [func_name1(params_name1=params_value1, params_name2=params_value2...), func_name2(params)]
+You SHOULD NOT include any other text in the response.
+
+Here is a list of functions in JSON format that you can invoke.
 
 {tools}""".format(
-        tools=list(
-            map(
-                lambda tool: {
-                    "name": tool.get("function").get("name"),
-                    "description": tool.get("function").get("description"),
-                    "parameters": {
-                        "type": "dict",
-                        "required": list(
-                            tool.get("function").get("parameters").get("required", [])
-                        ),
-                        "properties": {
-                            name: {
-                                "type": prop.get("type"),
-                                "description": prop.get("description"),
-                                "default": prop.get("default"),
-                            }
-                            for name, prop in tool.get("function")
-                            .get("parameters")
-                            .get("properties", {})
-                            .items()
+        # tools=pformat(
+        tools=json.dumps(
+            list(
+                map(
+                    lambda tool: {
+                        "name": tool.get("function").get("name"),
+                        "description": tool.get("function").get("description"),
+                        "parameters": {
+                            "type": "dict",
+                            "required": list(
+                                tool.get("function")
+                                .get("parameters")
+                                .get("required", [])
+                            ),
+                            "properties": {
+                                name: {
+                                    "type": prop.get("type"),
+                                    "description": prop.get("description"),
+                                    "default": prop.get("default"),
+                                }
+                                for name, prop in tool.get("function")
+                                .get("parameters")
+                                .get("properties", {})
+                                .items()
+                            },
                         },
                     },
-                },
-                tools,
-            )
+                    tools,
+                )
+            ),
+            indent=4,
+            # compact=True,
+            # sort_dicts=False,
         )
     )
 
@@ -145,10 +182,22 @@ def pretty_print_conversation(
         )
 
         if message_tool_calls:
-            print(colored(f"{message_tool_calls}\n", role_to_color[message_role]))
+            # print(colored(f"{message_tool_calls}\n", role_to_color[message_role]))
+            print(
+                colored(
+                    f"{message_role}:\n\n{message_tool_calls}\n",
+                    role_to_color[message_role],
+                )
+            )
 
         else:
-            print(colored(f"{message_content}\n", role_to_color[message_role]))
+            # print(colored(f"{message_content}\n", role_to_color[message_role]))
+            print(
+                colored(
+                    f"{message_role}:\n\n{message_content}\n",
+                    role_to_color[message_role],
+                )
+            )
 
 
 if __name__ == "__main__":

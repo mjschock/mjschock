@@ -4,6 +4,7 @@ composio-crewai
 composio-langgraph
 composio-openai
 crewai
+duckduckgo-search
 gpt4all
 isort
 llama-stack-client
@@ -13,7 +14,9 @@ langgraph
 langgraph-checkpoint
 langgraph-checkpoint-postgres
 langgraph-checkpoint-sqlite
+markdownify
 pandas
 # pygraphviz
 swekit
 termcolor
+transformers

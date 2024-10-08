@@ -6,20 +6,23 @@ from uuid import uuid4
 
 import dotenv
 from langgraph.graph import END, StateGraph
-from openai import OpenAI
+from openai import OpenAI, pydantic_function_tool
+from openai.types.chat.chat_completion_assistant_message_param import (
+    ChatCompletionAssistantMessageParam,
+)
 from openai.types.chat.chat_completion_message import ChatCompletionMessage
-from openai.types.chat.chat_completion_message_param import \
-    ChatCompletionMessageParam
-from openai.types.chat.chat_completion_assistant_message_param import \
-    ChatCompletionAssistantMessageParam
-from openai.types.chat.chat_completion_user_message_param import \
-    ChatCompletionUserMessageParam
-from openai.types.chat.chat_completion_system_message_param import \
-    ChatCompletionSystemMessageParam
-from openai.types.chat.chat_completion_tool_message_param import \
-    ChatCompletionToolMessageParam
+from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
 from openai.types.chat.chat_completion_message_tool_call import (
     ChatCompletionMessageToolCall,
+)
+from openai.types.chat.chat_completion_system_message_param import (
+    ChatCompletionSystemMessageParam,
+)
+from openai.types.chat.chat_completion_tool_message_param import (
+    ChatCompletionToolMessageParam,
+)
+from openai.types.chat.chat_completion_user_message_param import (
+    ChatCompletionUserMessageParam,
 )
 from typing_extensions import Annotated
 
@@ -68,8 +71,12 @@ Now, to support replacing existing messages, we annotate the
 `messages` key with a customer reducer function, which replaces
 messages with the same `id`, and appends them otherwise.
 """
+
+
 # def reduce_messages(left: list[AnyMessage], right: list[AnyMessage]) -> list[AnyMessage]:
-def reduce_messages(left: list[ChatCompletionMessageParam], right: list[ChatCompletionMessageParam]) -> list[ChatCompletionMessageParam]:
+def reduce_messages(
+    left: list[ChatCompletionMessageParam], right: list[ChatCompletionMessageParam]
+) -> list[ChatCompletionMessageParam]:
     # assign ids to messages that don't have them
     for message in right:
         # if not message.id:
@@ -93,7 +100,6 @@ def reduce_messages(left: list[ChatCompletionMessageParam], right: list[ChatComp
             merged.append(message)
 
     return merged
-
 
 
 class AgentState(TypedDict):
@@ -169,7 +175,8 @@ class Agent:
                 id=tool_call.get("id"),
                 function=tool_call.get("function"),
                 type=tool_call.get("type"),
-            ) for tool_call in latest_message_tool_calls
+            )
+            for tool_call in latest_message_tool_calls
         ]
 
         observations, rewards, terminations, truncations, infos = env.step(
