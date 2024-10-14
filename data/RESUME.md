@@ -167,6 +167,10 @@ keywords: [artificial intelligence, machine learning, software engineering]
     <td>Fall 2024</td>
   </tr>
   <tr>
+    <td>Introducing Multimodal Llama 3.2 (DeepLearning.AI; <a href="https://learn.deeplearning.ai/accomplishments/2af7c478-abed-4c47-9c50-090538210a39?usp=sharing">2af7c478-abed-4c47-9c50-090538210a39</a>)</td>
+    <td>Oct. 2024</td>
+  </tr>
+  <tr>
     <td>AI Agents in LangGraph (DeepLearning.AI; <a href="https://learn.deeplearning.ai/accomplishments/0d74827b-6eea-4192-a91b-0531fa1b4cc3?usp=sharing">0d74827b-6eea-4192-a91b-0531fa1b4cc3</a>)</td>
     <td>Sep. 2024</td>
   </tr>
