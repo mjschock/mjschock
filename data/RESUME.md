@@ -90,7 +90,7 @@ keywords: [artificial intelligence, machine learning, software engineering]
 
 - Engineered features for the BigCommerce storefront platform.
 - Wrote unit tests for all new and changed code, increasing code coverage.
-- While taking the lead on building out a new feature, discovered an opportunity to improve the codebase by refactoring the code into an easier-toreason-about structure such that future additions wouldn’t require as much overhead.
+- While taking the lead on building out a new feature, discovered an opportunity to improve the codebase by refactoring the code into an easier-to-reason-about structure such that future additions wouldn’t require as much overhead.
 - **Technologies**: Amazon Web Services (AWS), Docker, gRPC, hapi, JavasScript/TypeScript, Laravel, PHP, React, Ruby, Ruby on Rails
 
 <br/>
