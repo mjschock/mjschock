@@ -150,7 +150,7 @@ keywords: [artificial intelligence, machine learning, software engineering]
 <table>
   <tr>
     <th>Bachelor Of Arts In Physics</th>
-    <th>May 2010</th>
+    <th></th>
   </tr>
   <tr>
     <th>University Of California, Berkeley</th>
