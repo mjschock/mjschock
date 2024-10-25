@@ -16,10 +16,10 @@ from openai.types.chat.chat_completion_system_message_param import (
 from openai.types.chat.chat_completion_user_message_param import (
     ChatCompletionUserMessageParam,
 )
+from swe_agent.tools import tools
 from termcolor import colored
 
 from swe_agent.agent import Agent
-from swe_agent.tools import tools
 
 model = "llama3.2:1b"
 

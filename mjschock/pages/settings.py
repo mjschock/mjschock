@@ -1,8 +1,8 @@
 """The settings page."""
 
-from mjschock.templates import ThemeState, template
-
 import reflex as rx
+
+from mjschock.templates import ThemeState, template
 
 
 @template(route="/settings", title="Settings")

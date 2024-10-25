@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-from mjschock import styles
-from mjschock.components.sidebar import sidebar
 from typing import Callable
 
 import reflex as rx
+
+from mjschock import styles
+from mjschock.components.sidebar import sidebar
 
 # Meta tags for the app.
 default_meta = [
@@ -56,7 +57,7 @@ def menu_button() -> rx.Component:
                 rx.menu.separator(),
                 # menu_item_link("About", "https://github.com/reflex-dev"),
                 # menu_item_link("Contact", "mailto:founders@=reflex.dev"),
-                menu_item_link("Contact", "mailto:m@mjschock.com")
+                menu_item_link("Contact", "mailto:m@mjschock.com"),
             ),
         ),
         position="fixed",

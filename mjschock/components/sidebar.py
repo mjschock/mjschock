@@ -1,8 +1,8 @@
 """Sidebar component for the app."""
 
-from mjschock import styles
-
 import reflex as rx
+
+from mjschock import styles
 
 
 def sidebar_header() -> rx.Component:

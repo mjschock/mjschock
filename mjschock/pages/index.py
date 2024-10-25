@@ -1,9 +1,9 @@
 """The home page of the app."""
 
+import reflex as rx
+
 from mjschock import styles
 from mjschock.templates import template
-
-import reflex as rx
 
 
 @template(route="/", title="Home")

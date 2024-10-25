@@ -5,7 +5,6 @@ from pathlib import Path
 from agent import composio_toolset
 from composio import Action
 
-
 InputType = t.TypeVar("InputType")
 
 
@@ -41,13 +40,18 @@ def _create_github_issue_validator(owner: str, name: str) -> t.Callable[[str], s
 
         if re.match(r"^\d+$", value):
             response_data = composio_toolset.execute_action(
-                action=Action.GITHUB_ISSUES_GET,
+                # action=Action.GITHUB_ISSUES_GET,
+                action=Action.GITHUB_GET_AN_ISSUE,
                 params={
                     "owner": owner,
                     "repo": name,
                     "issue_number": int(value),
                 },
-            ).get("response_data")
+            ).get("data")
+
+            print('response_data["body"]:')
+            print(response_data["body"])
+
             return response_data["body"]
 
         return value

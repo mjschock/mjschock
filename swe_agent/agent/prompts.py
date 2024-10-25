@@ -66,4 +66,6 @@ If you are facing "module not found error", you can install dependencies.
 Example: in case error is "pandas not found", install pandas like this `pip install pandas`
 """
 
-EXPECTED_OUTPUT = "A patch should be generated which fixes the given issue and a PR should be created"
+EXPECTED_OUTPUT = (
+    "A patch should be generated which fixes the given issue and a PR should be created"
+)

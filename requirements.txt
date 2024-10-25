@@ -1,7 +1,8 @@
 black==24.8.0
-composio_crewai==0.5.35
-composio_langgraph==0.5.35
-composio_openai==0.5.35
+composio_core==0.5.36
+composio_crewai==0.5.36
+composio_langgraph==0.5.36
+composio_openai==0.5.36
 crewai-tools==0.12.1
 duckduckgo_search==6.3.0
 e2b-code-interpreter==0.0.10

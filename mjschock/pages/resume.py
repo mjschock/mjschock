@@ -1,9 +1,9 @@
 """The resume page."""
 
+import reflex as rx
+
 from mjschock import styles
 from mjschock.templates import template
-
-import reflex as rx
 
 
 @template(route="/resume", title="Resume")
@@ -60,7 +60,7 @@ def resume() -> rx.Component:
         # ),
         rx.html(
             "<embed src='/Resume - Michael James Schock.pdf' type='application/pdf' width='1024' height='768'>",
-        )
+        ),
     )
 
     # return rx.box(element="embed", src="/Resume.pdf", width="100%")

@@ -24,9 +24,8 @@ from openai.types.chat.chat_completion_tool_message_param import (
 from openai.types.chat.chat_completion_user_message_param import (
     ChatCompletionUserMessageParam,
 )
-from typing_extensions import Annotated
-
 from swe_agent.tools import composio_toolset
+from typing_extensions import Annotated
 
 # Load environment variables from .env
 dotenv.load_dotenv()

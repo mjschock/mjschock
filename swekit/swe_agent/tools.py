@@ -39,6 +39,7 @@ def get_weather(location: str) -> str:
 
 duck_duck_go_search_tool = DuckDuckGoSearchTool()
 
+
 @action(toolname="duck_duck_go_search_tool", requires=["duckduckgo_search"])
 def web_search(query: str) -> str:
     """
@@ -50,7 +51,9 @@ def web_search(query: str) -> str:
     """
     return str(duck_duck_go_search_tool.forward(query))
 
+
 visit_webpage_tool = VisitWebpageTool()
+
 
 @action(toolname="visit_webpage_tool", requires=["markdownify", "requests"])
 def visit_webpage(url: str) -> str:
@@ -61,6 +64,7 @@ def visit_webpage(url: str) -> str:
     :return content: The content of the webpage as markdown.
     """
     return visit_webpage_tool.forward(url)
+
 
 # composio_toolset = ComposioToolSet(workspace_config=WorkspaceType.Docker())
 composio_toolset = ComposioToolSet(workspace_config=WorkspaceType.Host())

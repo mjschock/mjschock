@@ -1,8 +1,8 @@
 """The dashboard page."""
 
-from mjschock.templates import template
-
 import reflex as rx
+
+from mjschock.templates import template
 
 
 @template(route="/dashboard", title="Dashboard")

@@ -1,9 +1,9 @@
 """Welcome to Reflex!."""
 
 # Import all the pages.
-from mjschock.pages import *
-
 import reflex as rx
+
+from mjschock.pages import *
 
 
 class State(rx.State):
