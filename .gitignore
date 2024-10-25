@@ -1,5 +1,7 @@
+assets/external/
 bin
 *.db
+.env
 __pycache__/
 *.py[cod]
 .venv
