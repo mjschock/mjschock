@@ -1,14 +1,15 @@
 black==24.8.0
-composio_core==0.5.35
 composio_crewai==0.5.35
 composio_langgraph==0.5.35
 composio_openai==0.5.35
 crewai-tools==0.12.1
 duckduckgo_search==6.3.0
+e2b-code-interpreter==0.0.10
 email_validator==2.2.0
 fastapi-cli==0.0.4
 fqdn==1.5.1
 gpt4all==2.8.2
+gql==3.5.0
 grpcio-status==1.62.3
 h2==4.1.0
 httptools==0.6.1
