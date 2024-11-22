@@ -167,6 +167,10 @@ keywords: [artificial intelligence, machine learning, software engineering]
     <td>Fall 2024</td>
   </tr>
   <tr>
+    <td>Practical Multi AI Agents and Advanced Use Cases with crewAI (<a href="https://learn.deeplearning.ai/accomplishments/49490228-c5a1-414c-ab64-3d0e6f265931?usp=sharing">49490228-c5a1-414c-ab64-3d0e6f265931</a>)</td>
+    <td>Nov. 2024</td>
+  </tr>
+  <tr>
     <td>Introducing Multimodal Llama 3.2 (DeepLearning.AI; <a href="https://learn.deeplearning.ai/accomplishments/2af7c478-abed-4c47-9c50-090538210a39?usp=sharing">2af7c478-abed-4c47-9c50-090538210a39</a>)</td>
     <td>Oct. 2024</td>
   </tr>
@@ -275,4 +279,4 @@ keywords: [artificial intelligence, machine learning, software engineering]
 ## Skills
 <hr/>
 
-Accelerate, Agent Protocol, AutoGen, AutoGPT, bitsandbytes, Computer Vision, ControlFlow, crewAI, DataDreamer, Datasets, Diffusers, Evaluate, Function/Tool Calling, JavaScript/TypeScript, LangChain, LangGraph, llama.cpp, LlamaIndex, Marvin, Multimodal LLM/VLMs, NumPy, OpenAI, PEFT (Parameter-Efficient Fine-Tuning), pandas, PostgreSQL, Prefect, Python, PyTorch, Ray, Reflex, scikit-learn, SkyPilot, SQL, Swarms, Tokenizers, timm, Transformers, TRL, ...
+Accelerate, Agent Protocol, AutoGen, AutoGPT, bitsandbytes, Computer Vision, ControlFlow, crewAI, DataDreamer, Datasets, Diffusers, Evaluate, Function/Tool Calling, JavaScript/TypeScript, LangChain, LangGraph, llama.cpp, LlamaIndex, Marvin, Multimodal LLM/VLMs, NumPy, OpenAI, PEFT, pandas, PostgreSQL, Prefect, Python, PyTorch, Ray, Reflex, scikit-learn, SkyPilot, SQL, Swarms, Tokenizers, timm, Transformers, TRL, ...

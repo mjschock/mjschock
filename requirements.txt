@@ -24,6 +24,8 @@ langgraph-checkpoint-sqlite==2.0.0
 litellm==1.48.7
 llama_stack_client==0.0.39
 markdownify==0.13.1
+pdf2docx==0.5.8
+pdfplumber==0.11.4
 playwright==1.48.0
 PySocks==1.7.1
 pyvis==0.3.2
