@@ -1,3 +1,7 @@
+deploy:
+	cd mjschock && \
+	fly deploy
+
 dist:
 	pandoc "data/RESUME.md" \
 		--css=data/style.css \
