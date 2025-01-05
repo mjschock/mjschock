@@ -17,9 +17,9 @@ Email: m@mjschock | LinkedIn: in/mjschock | Phone: +1 925 878 5408
 **Phaidra** | Seattle, WA (Remote) | *Oct. 2022 - Jan. 2024*
 
 <!-- * Spearheaded orchestration and automation of AI agent training (with each agent an ensemble of PyTorch models) into an MLOps pipeline backed by a self-hosted in-cluster duo of Prefect Server and Agent to run training ad-hoc and on-schedule, with follow-up work demonstrating the migration path from the deprecated Prefect Agent to Kubernetes-native Prefect Worker. -->
-* Spearheaded orchestration and automation of AI agent training (with each agent an ensemble of PyTorch models) into an MLOps pipeline using Prefect Server and Agent, demonstrating scalability using the Prefect-Ray integration and Ray.
 <!-- * Rapidly prototyped a working MVP showcasing how we could easily scale the training runs via the Prefect-Ray integration and an in-cluster or Anyscale Cluster, also presenting SkyPilot as a way to abstract Ray and cloud computing resources, optimizing for minimal computational cost or time. -->
 <!-- * Modernized the developer experience for the AI Platform team by bringing in Tilt to watch for changes in the Kubernetes manifests for full Docker build/pushes, thereafter updating pods without reload for fast iteration, and providing custom functionality to run data preparation, agent training, and inference pipelines via configurable buttons in the Tilt UI. -->
+* Spearheaded orchestration and automation of AI agent training (with each agent an ensemble of PyTorch models) into an MLOps pipeline using Prefect Server and Agent, demonstrating scalability using the Prefect-Ray integration and Ray.
 * Modernized the developer experience by implementing Tilt for Kubernetes manifest changes, enabling rapid iteration with custom functionality for running ad-hoc data preparation, agent training, and inference pipelines.
 * Pioneered a proof-of-concept for cost-efficient scaling using SkyPilot to abstract Ray and cloud computing resources, optimizing for minimal computational cost and time.
 
@@ -34,13 +34,13 @@ Email: m@mjschock | LinkedIn: in/mjschock | Phone: +1 925 878 5408
 **Greyscale AI** | San Carlos, CA | *Oct. 2021 - Jul. 2022*
 
 <!-- * Created a proof of concept (POC) for a data engineering pipeline to extract, transform, and load images and their corresponding labels from various data sources and formats into the COCO dataset format with k-fold train-validation-test splits using the FiftyOne and Albumentations libraries. -->
-* Developed end-to-end data engineering pipeline to process diverse image sources into COCO dataset format with k-fold train-validation-test splits using FiftyOne and Albumentations libraries.
 <!-- * Constructed a POC for a data modeling pipeline to train and validate a PyTorch Faster R-CNN model with various modifications for computer vision tasks such as object detection and image segmentation from a train-validation split output by the data engineering pipeline. -->
-* Architected and implemented data modeling pipeline for training PyTorch Faster R-CNN models for computer vision tasks, incorporating advanced object detection and image segmentation capabilities.
 <!-- * Assembled a POC for a model deployment pipeline to deploy a model produced by the data modeling pipeline into a local docker container running TorchServe (or SageMaker) to run inference tests upon that model and to trigger the creation of a function that ran on schedule to monitor the deployed model.
 * Designed a dashboard using Amazon QuickSite to automatically generate visualizations, including emails pointing to those visualizations, that displayed the performance of the served model and assigned SageMaker GroundTruth jobs for our internal teams to help with data labeling. -->
-* Created automated model deployment pipeline using Docker and TorchServe/SageMaker, including scheduled model monitoring and performance visualization through Amazon QuickSight.
 <!-- * Built a POC framework using Kedro and DVC to join the data engineering, data modeling, and model deployment pipelines, running pipeline components only when artifacts tracked by DVC changed. -->
+* Developed end-to-end data engineering pipeline to process diverse image sources into COCO dataset format with k-fold train-validation-test splits using FiftyOne and Albumentations libraries.
+* Architected and implemented data modeling pipeline for training PyTorch Faster R-CNN models for computer vision tasks, incorporating advanced object detection and image segmentation capabilities.
+* Created automated model deployment pipeline using Docker and TorchServe/SageMaker, including scheduled model monitoring and performance visualization through Amazon QuickSight.
 * Unified data engineering, modeling, and deployment pipelines using Kedro and DVC, implementing intelligent artifact tracking for efficient pipeline execution.
 
 <!-- **Technologies**: Albumentations, Amazon QuickSite, Amazon SageMaker Ground Truth, Docker, DVC, Faster R-CNN, FiftyOne, Kedro, Matplotlib, MobileNet, NumPy, pandas, Python, PyTorch, scikit-learn, TorchServe, torchvision -->
@@ -174,6 +174,6 @@ Email: m@mjschock | LinkedIn: in/mjschock | Phone: +1 925 878 5408
 | Artificial Intelligence Nanodegree and Specializations | Udacity | Oct. 2017 |
 | Machine Learning Specialization | Coursera | Feb. 2017 |
 
-## Skills
+<!-- ## Skills
 
-Accelerate, Agent Protocol, AutoGen, AutoGPT, bitsandbytes, Computer Vision, ControlFlow, crewAI, DataDreamer, Datasets, Diffusers, Evaluate, Function/Tool Calling, JavaScript/TypeScript, LangChain, LangGraph, llama.cpp, LlamaIndex, Marvin, Multimodal LLM/VLMs, NumPy, OpenAI, PEFT, pandas, PostgreSQL, Prefect, Python, PyTorch, Ray, Reflex, scikit-learn, SkyPilot, SQL, Swarms, Tokenizers, timm, Transformers, TRL, ...
+Accelerate, Agent Protocol, AutoGen, AutoGPT, bitsandbytes, Computer Vision, ControlFlow, crewAI, DataDreamer, Datasets, Diffusers, Evaluate, Function/Tool Calling, JavaScript/TypeScript, LangChain, LangGraph, llama.cpp, LlamaIndex, Marvin, Multimodal LLM/VLMs, NumPy, OpenAI, PEFT, pandas, PostgreSQL, Prefect, Python, PyTorch, Ray, Reflex, scikit-learn, SkyPilot, SQL, Swarms, Tokenizers, timm, Transformers, TRL, ... -->
