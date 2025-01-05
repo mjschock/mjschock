@@ -38,10 +38,10 @@ Email: m@mjschock | LinkedIn: in/mjschock | Phone: +1 925 878 5408
 <!-- * Assembled a POC for a model deployment pipeline to deploy a model produced by the data modeling pipeline into a local docker container running TorchServe (or SageMaker) to run inference tests upon that model and to trigger the creation of a function that ran on schedule to monitor the deployed model.
 * Designed a dashboard using Amazon QuickSite to automatically generate visualizations, including emails pointing to those visualizations, that displayed the performance of the served model and assigned SageMaker GroundTruth jobs for our internal teams to help with data labeling. -->
 <!-- * Built a POC framework using Kedro and DVC to join the data engineering, data modeling, and model deployment pipelines, running pipeline components only when artifacts tracked by DVC changed. -->
-* Developed end-to-end data engineering pipeline to process diverse image sources into COCO dataset format with k-fold train-validation-test splits using FiftyOne and Albumentations libraries.
-* Architected and implemented data modeling pipeline for training PyTorch Faster R-CNN models for computer vision tasks, incorporating advanced object detection and image segmentation capabilities.
-* Created automated model deployment pipeline using Docker and TorchServe/SageMaker, including scheduled model monitoring and performance visualization through Amazon QuickSight.
-* Unified data engineering, modeling, and deployment pipelines using Kedro and DVC, implementing intelligent artifact tracking for efficient pipeline execution.
+* Developed an end-to-end data engineering pipeline to process diverse image sources into the COCO dataset format with k-fold train-validation-test splits using the FiftyOne and Albumentations libraries.
+* Architected and implemented a data modeling pipeline for training PyTorch Faster R-CNN models for computer vision tasks, incorporating advanced object detection and image segmentation capabilities.
+* Created an automated model deployment pipeline using Docker and TorchServe/SageMaker, including scheduled model monitoring and performance visualization through Amazon QuickSight.
+* Unified the data engineering, modeling, and deployment pipelines using Kedro and DVC, implementing intelligent artifact tracking for efficient pipeline execution.
 
 <!-- **Technologies**: Albumentations, Amazon QuickSite, Amazon SageMaker Ground Truth, Docker, DVC, Faster R-CNN, FiftyOne, Kedro, Matplotlib, MobileNet, NumPy, pandas, Python, PyTorch, scikit-learn, TorchServe, torchvision -->
 
@@ -53,10 +53,10 @@ Email: m@mjschock | LinkedIn: in/mjschock | Phone: +1 925 878 5408
 * Led the development of the forecasting service.
 * Built a worker service that operated on graph structures representing machine learning tasks and states.
 * Developed various features and addressed bugs in our systems. -->
-* Refactored data ingestion pipeline into modular components, improving system maintainability and scalability.
-* Led development and implementation of forecasting service using Amazon Forecast, enhancing predictive capabilities.
-* Architected and built distributed worker service operating on graph structures for complex machine learning tasks and state management.
-* Drove implementation of model explainability features using SHAP (SHapley Additive exPlanations).
+* Refactored the data ingestion pipeline into modular components, improving system maintainability and scalability.
+* Led the development and implementation of the forecasting service using Amazon Forecast, enhancing predictive capabilities.
+* Architected and built a distributed worker service operating on graph structures for complex machine learning tasks and state management.
+* Drove the implementation of model explainability features using SHAP (SHapley Additive exPlanations).
 
 <!-- **Technologies**: Amazon Forecast, Amazon Web Services (AWS), Docker, Docker Compose, JavaScript, LightGBM, Matplotlib, NumPy, pandas, Python, SHAP (SHapley Additive exPlanations), Tableau -->
 
