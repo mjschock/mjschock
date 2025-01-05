@@ -1,4 +1,5 @@
 deploy:
+	cp README.md mjschock/storage/data/resume.md && \
 	cd mjschock && \
 	fly deploy
 
