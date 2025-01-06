@@ -1,4 +1,0 @@
-flet
-markdown
-pypandoc
-weasyprint

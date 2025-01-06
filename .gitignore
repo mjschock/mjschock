@@ -1,8 +1,4 @@
-assets/external/
-bin
-*.db
+__pycache__
 .env
-__pycache__/
-*.py[cod]
 .venv
-.web
+storage

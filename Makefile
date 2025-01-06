@@ -1,6 +1,5 @@
 deploy:
-	cp README.md mjschock/storage/data/resume.md && \
-	cd mjschock && \
+	cp README.md storage/data/resume.md && \
 	fly deploy
 
 dist:
@@ -19,8 +18,3 @@ dist:
 
 reference_doc:
 	pandoc -o data/custom-reference.docx --print-default-data-file reference.docx
-
-swe_agent_run:
-	. .venv/bin/activate && \
-	cd swe_agent/agent && \
-	python main.py

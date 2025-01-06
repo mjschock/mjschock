@@ -6,6 +6,7 @@ processes = []
 
 [env]
   FLET_APP_STORAGE_DATA = "/app/storage/data"
+  FLET_APP_STORAGE_TEMP = "/app/storage/temp"
   FLET_SESSION_TIMEOUT = "60"
 
 [http_service]
