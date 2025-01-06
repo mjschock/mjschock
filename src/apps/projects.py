@@ -3,16 +3,19 @@ import random
 
 import flet as ft
 
+MINUTES = 1
+
 
 class ProjectList(ft.UserControl):
     def __init__(self):
         super().__init__()
-
         self.max_items = 6
         self.selected_project_index = None
         self.timer_running = False
         self.remaining_time = 0
         self.timer_project = None
+        self.flash_task = None
+        self.flash_count = 0
 
     def build(self):
         # Create project fields
@@ -47,16 +50,31 @@ class ProjectList(ft.UserControl):
 
         # Create dice button and timer elements
         self.dice_button = ft.ElevatedButton(text="🎲", on_click=self.roll_dice)
-
-        self.timer_text = ft.Text("25:00", size=24)
+        self.timer_text = ft.Text(f"{MINUTES}:00", size=24)
         self.start_timer_button = ft.ElevatedButton(
             text="Start Pomodoro", on_click=self.start_pomodoro, disabled=True
+        )
+
+        # Create alert banner
+        self.alert_banner = ft.Container(
+            content=ft.Text(
+                "Time's up! Take a break!",
+                size=20,
+                weight=ft.FontWeight.BOLD,
+                color=ft.colors.WHITE,
+            ),
+            bgcolor=ft.colors.RED_400,
+            padding=20,
+            visible=False,
+            border_radius=5,
+            alignment=ft.alignment.center,
         )
 
         # Main layout
         return ft.Container(
             content=ft.Column(
                 [
+                    self.alert_banner,
                     ft.Row(
                         [ft.Text("Projects", size=32, weight=ft.FontWeight.BOLD)],
                         alignment=ft.MainAxisAlignment.CENTER,
@@ -74,6 +92,8 @@ class ProjectList(ft.UserControl):
     def reset_colors(self):
         for container in self.project_rows:
             container.bgcolor = ft.colors.WHITE
+
+        self.alert_banner.visible = False
         self.update()
 
     def reset_timer(self):
@@ -81,10 +101,34 @@ class ProjectList(ft.UserControl):
             self.timer_project.cancel()
             self.timer_project = None
 
+        if self.flash_task:
+            self.flash_task.cancel()
+            self.flash_task = None
+
         self.timer_running = False
         self.remaining_time = 0
-        self.timer_text.value = "25:00"
+        self.timer_text.value = f"{MINUTES}:00"
         self.start_timer_button.text = "Start Pomodoro"
+        self.alert_banner.visible = False
+        self.flash_count = 0
+
+    async def flash_alert(self):
+        while self.flash_count < 6:  # Flash 3 times (6 color changes)
+            self.alert_banner.visible = True
+
+            if self.flash_count % 2 == 0:
+                self.alert_banner.bgcolor = ft.colors.RED_400
+
+            else:
+                self.alert_banner.bgcolor = ft.colors.ORANGE_400
+
+            self.flash_count += 1
+            self.update()
+
+            await asyncio.sleep(0.5)
+
+        self.alert_banner.visible = True
+        self.alert_banner.bgcolor = ft.colors.RED_400
 
     async def roll_dice(self, e):
         # Reset previous selection and timer
@@ -120,17 +164,26 @@ class ProjectList(ft.UserControl):
             self.update()
 
         if self.remaining_time <= 0:
-            self.reset_timer()
+            # Start the flashing alert
+            self.flash_task = asyncio.create_task(self.flash_alert())
+
+            # Play a notification sound using the page's window object
+            await self.page.window_to_front_async()
+            await self.page.window_flash_async()
+
+            self.timer_running = False
+            self.start_timer_button.text = "Start Pomodoro"
+
             self.update()
 
     async def start_pomodoro(self, e):
         if not self.timer_running:
             self.timer_running = True
-            self.remaining_time = 25 * 60  # 25 minutes in seconds
+            self.remaining_time = MINUTES * 60  # 25 minutes in seconds
             self.start_timer_button.text = "Stop"
+            self.alert_banner.visible = False
             # Create and store the timer project
             self.timer_project = asyncio.create_task(self.update_timer())
-
         else:
             self.reset_timer()
 
