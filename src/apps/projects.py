@@ -16,10 +16,11 @@ class ProjectList(ft.UserControl):
         self.flash_task = None
         self.flash_count = 0
         self.storage_key = "pomodoro_projects"
+        self.active_frog_index = None
 
-    async def did_mount(self):
+    def did_mount(self):
         # Load saved projects when the component mounts
-        await self.load_projects()
+        self.page.run_task(self.load_projects)
 
     async def save_projects(self):
         """Save project names to local storage"""
@@ -39,9 +40,23 @@ class ProjectList(ft.UserControl):
             except json.JSONDecodeError:
                 print("Error loading saved projects")
 
+    def toggle_frog(self, index, e):
+        if self.active_frog_index == index:
+            self.active_frog_index = None
+        else:
+            self.active_frog_index = index
+
+        for i, frog in enumerate(self.frog_buttons):
+            frog.content.value = "🐸" if i == self.active_frog_index else "🐸"
+            frog.content.color = (
+                ft.colors.GREEN if i == self.active_frog_index else ft.colors.GREY_400
+            )
+
+        self.update()
+
     def build(self):
-        # Create project fields
         self.project_fields = []
+        self.frog_buttons = []
 
         for i in range(self.max_items):
             field = ft.TextField(
@@ -54,13 +69,19 @@ class ProjectList(ft.UserControl):
             )
             self.project_fields.append(field)
 
-        # Create project rows
+            frog_button = ft.TextButton(
+                content=ft.Text("🐸", color=ft.colors.GREY_400),
+                on_click=lambda event, i=i: self.toggle_frog(i, event),
+            )
+            self.frog_buttons.append(frog_button)
+
         self.project_rows = [
             ft.Container(
                 content=ft.Row(
                     [
                         ft.Text(f"{i+1}.", color=ft.colors.BLACK, size=16),
                         self.project_fields[i],
+                        self.frog_buttons[i],
                     ]
                 ),
                 bgcolor=ft.colors.WHITE,
@@ -129,6 +150,9 @@ class ProjectList(ft.UserControl):
         """Clear all project fields and storage"""
         for field in self.project_fields:
             field.value = ""
+        self.active_frog_index = None
+        for frog in self.frog_buttons:
+            frog.icon_color = ft.colors.GREY_400
         await self.save_projects()
         self.update()
 
