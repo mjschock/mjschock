@@ -13,6 +13,15 @@ Email: m@mjschock | LinkedIn: in/mjschock | Phone: +1 925 878 5408
 
 ## Professional Experience
 
+### Founding Engineer
+**ArchiLabs** | San Francisco, CA (Hybrid) | *Mar. 2025 - Present*
+
+* Working on ArchiLabs' mission to create the first AI Architect to make all new construction faster & more affordable
+* Developing across the full stack, including Revit integrations, React frontend, Supabase, and AI agents powered by LangGraph
+* Working directly with the CEO and CTO founders and the BIM specialist
+* Contributing to a fast-moving YC-backed startup focused on solving critical problems in the construction industry
+* Improving the AI capabilities to enhance construction planning and design efficiency
+
 ### Software Engineer (AI/ML Platform)
 **Phaidra** | Seattle, WA (Remote) | *Oct. 2022 - Jan. 2024*
 
@@ -106,7 +115,7 @@ Email: m@mjschock | LinkedIn: in/mjschock | Phone: +1 925 878 5408
 
 ### Master Of Science In Computer Science
 <!-- **Georgia Institute of Technology** | Atlanta, GA (Less-than-Part-Time; Remote) | *Jan. 2018 - May 2025* -->
-**Georgia Institute of Technology** | Atlanta, GA | *Jan. 2018 - May 2025*
+**Georgia Institute of Technology** | Atlanta, GA | *Jan. 2018 - May 2026*
 <!-- Specialization in Computational Perception and Robotics -->
 
 ### Bachelor Of Arts In Physics
@@ -176,4 +185,4 @@ Email: m@mjschock | LinkedIn: in/mjschock | Phone: +1 925 878 5408
 
 <!-- ## Skills
 
-Accelerate, Agent Protocol, AutoGen, AutoGPT, bitsandbytes, Computer Vision, ControlFlow, crewAI, DataDreamer, Datasets, Diffusers, Evaluate, Function/Tool Calling, JavaScript/TypeScript, LangChain, LangGraph, llama.cpp, LlamaIndex, Marvin, Multimodal LLM/VLMs, NumPy, OpenAI, PEFT, pandas, PostgreSQL, Prefect, Python, PyTorch, Ray, Reflex, scikit-learn, SkyPilot, SQL, Swarms, Tokenizers, timm, Transformers, TRL, ... -->
+Accelerate, Agent Protocol, AutoGen, AutoGPT, bitsandbytes, Computer Vision, ControlFlow, crewAI, DataDreamer, Datasets, Diffusers, Evaluate, Function/Tool Calling, JavaScript/TypeScript, LangChain, LangGraph, llama.cpp, LlamaIndex, Marvin, Multimodal LLM/VLMs, NumPy, OpenAI, PEFT (Parameter-Efficient Fine-Tuning), pandas, PostgreSQL, Prefect, Python, PyTorch, Ray, Reflex, scikit-learn, SkyPilot, smolagents, SQL, Supabase, Swarms, Tokenizers, timm, Transformers, TRL, ... -->

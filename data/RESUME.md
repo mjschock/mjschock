@@ -14,6 +14,24 @@ keywords: [artificial intelligence, machine learning, software engineering]
 
 <table>
   <tr>
+    <th>Founding Engineer</th>
+    <th>Mar. 2025 - Present</th>
+  </tr>
+  <tr>
+    <th>ArchiLabs</th>
+    <th>San Francisco, CA (Hybrid)</th>
+  </tr>
+</table>
+
+- Working on ArchiLabs' mission to create the first AI Architect to make all new construction faster & more affordable
+- Developing across the full stack, including Revit integrations, React frontend, Supabase, and AI agents powered by LangGraph
+- Working directly with the CEO and CTO founders and the BIM specialist
+- Contributing to a fast-moving YC-backed startup focused on solving critical problems in the construction industry
+- Improving the AI capabilities to enhance construction planning and design efficiency
+- **Technologies:** React, Supabase, LangGraph, LangChain, LangSmith, Revit integrations, AI agent systems
+
+<table>
+  <tr>
     <th>Software Engineer (AI/ML Platform)</th>
     <th>Oct. 2022 - Jan. 2024</th>
   </tr>
@@ -90,7 +108,7 @@ keywords: [artificial intelligence, machine learning, software engineering]
 
 - Engineered features for the BigCommerce storefront platform.
 - Wrote unit tests for all new and changed code, increasing code coverage.
-- While taking the lead on building out a new feature, discovered an opportunity to improve the codebase by refactoring the code into an easier-to-reason-about structure such that future additions wouldn’t require as much overhead.
+- While taking the lead on building out a new feature, discovered an opportunity to improve the codebase by refactoring the code into an easier-to-reason-about structure such that future additions wouldn't require as much overhead.
 - **Technologies**: Amazon Web Services (AWS), Docker, gRPC, hapi, JavasScript/TypeScript, Laravel, PHP, React, Ruby, Ruby on Rails
 
 <br/>
@@ -137,7 +155,7 @@ keywords: [artificial intelligence, machine learning, software engineering]
 <table>
   <tr>
     <th>Master Of Science In Computer Science</th>
-    <th>Jan. 2018 - May 2025</th>
+    <th>Jan. 2018 - May 2026</th>
   </tr>
   <tr>
     <th>Georgia Institute of Technology</th>
@@ -258,7 +276,7 @@ keywords: [artificial intelligence, machine learning, software engineering]
     <td>Deep Learning Foundation Nanodegree (Udacity; <a href="https://confirm.udacity.com/ARGFFMSM">6LD4H74U</a>)</td>
     <td>Jan. 2018</td>
   </tr>
-  <tr>
+  <!-- <tr>
     <td>React Nanodegree (Udacity; <a href="https://confirm.udacity.com/7Q4R92JT">7Q4R92JT</a>)</td>
     <td>Dec. 2017</td>
   </tr>
@@ -269,14 +287,14 @@ keywords: [artificial intelligence, machine learning, software engineering]
   <tr>
     <td>Machine Learning Specialization (Coursera; S58WYDFTRMTB)</td>
     <td>Feb. 2017</td>
-  </tr>
-  <tr>
+  </tr> -->
+  <!-- <tr>
     <td>CSCI E-160: Java for Distributed Computing (Harvard Extension School)</td>
     <td>2012</td>
-  </tr>
+  </tr> -->
 </table>
 
-## Skills
+<!-- ## Skills
 <hr/>
 
-Accelerate, Agent Protocol, AutoGen, AutoGPT, bitsandbytes, Computer Vision, ControlFlow, crewAI, DataDreamer, Datasets, Diffusers, Evaluate, Function/Tool Calling, JavaScript/TypeScript, LangChain, LangGraph, llama.cpp, LlamaIndex, Marvin, Multimodal LLM/VLMs, NumPy, OpenAI, PEFT, pandas, PostgreSQL, Prefect, Python, PyTorch, Ray, Reflex, scikit-learn, SkyPilot, SQL, Swarms, Tokenizers, timm, Transformers, TRL, ...
+Accelerate, Agent Protocol, AutoGen, AutoGPT, bitsandbytes, Computer Vision, ControlFlow, crewAI, DataDreamer, Datasets, Diffusers, Evaluate, Function/Tool Calling, JavaScript/TypeScript, LangChain, LangGraph, llama.cpp, LlamaIndex, Marvin, Multimodal LLM/VLMs, NumPy, OpenAI, PEFT (Parameter-Efficient Fine-Tuning), pandas, PostgreSQL, Prefect, Python, PyTorch, Ray, Reflex, scikit-learn, SkyPilot, smolagents, SQL, Supabase, Swarms, Tokenizers, timm, Transformers, TRL, ... -->
