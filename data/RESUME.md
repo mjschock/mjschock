@@ -113,9 +113,6 @@ keywords: [artificial intelligence, machine learning, software engineering]
 - While taking the lead on building out a new feature, discovered an opportunity to improve the codebase by refactoring the code into an easier-to-reason-about structure such that future additions wouldn't require as much overhead.
 - **Technologies**: Amazon Web Services (AWS), Docker, gRPC, hapi, JavasScript/TypeScript, Laravel, PHP, React, Ruby, Ruby on Rails
 
-<br/>
-<br/>
-<br/>
 <table>
   <tr>
     <th>Software Engineer</th>
@@ -281,12 +278,12 @@ keywords: [artificial intelligence, machine learning, software engineering]
   <!-- <tr>
     <td>React Nanodegree (Udacity; <a href="https://confirm.udacity.com/7Q4R92JT">7Q4R92JT</a>)</td>
     <td>Dec. 2017</td>
-  </tr>
-  <tr>
+  </tr> -->
+  <!-- <tr>
     <td>Artificial Intelligence Nanodegree and Specializations (Udacity; <a href="https://confirm.udacity.com/EH367J99">EH367J99</a>)</td>
     <td>Oct. 2017</td>
-  </tr>
-  <tr>
+  </tr> -->
+  <!-- <tr>
     <td>Machine Learning Specialization (Coursera; S58WYDFTRMTB)</td>
     <td>Feb. 2017</td>
   </tr> -->
