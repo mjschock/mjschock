@@ -95,6 +95,8 @@ keywords: [artificial intelligence, machine learning, software engineering]
 - Developed various features and addressed bugs in our systems.
 - **Technologies**: Amazon Forecast, Amazon Web Services (AWS), Docker, Docker Compose, JavaScript, LightGBM, Matplotlib, NumPy, pandas, Python, SHAP (SHapley Additive exPlanations), Tableau
 
+<br/>
+
 <table>
   <tr>
     <th>Software Engineer</th>
@@ -272,10 +274,10 @@ keywords: [artificial intelligence, machine learning, software engineering]
     <td>CS 7638: Artificial Intelligence Techniques for Robotics (Georgia Tech)</td>
     <td>Spring 2018</td>
   </tr>
-  <tr>
+  <!-- <tr>
     <td>Deep Learning Foundation Nanodegree (Udacity; <a href="https://confirm.udacity.com/ARGFFMSM">6LD4H74U</a>)</td>
     <td>Jan. 2018</td>
-  </tr>
+  </tr> -->
   <!-- <tr>
     <td>React Nanodegree (Udacity; <a href="https://confirm.udacity.com/7Q4R92JT">7Q4R92JT</a>)</td>
     <td>Dec. 2017</td>
