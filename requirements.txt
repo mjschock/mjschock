@@ -1,7 +1,0 @@
-black
-flet
-flet-web
-isort
-markdown
-pypandoc
-weasyprint

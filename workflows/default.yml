@@ -1,0 +1,37 @@
+name: Build PDF from Markdown
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+        
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc
+        pip install weasyprint
+        
+    - name: Build PDF
+      run: |
+        pandoc "README.md" --css=style.css --output "README.pdf" --pdf-engine=weasyprint
+        
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: README-PDF
+        path: README.pdf
