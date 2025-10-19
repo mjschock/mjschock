@@ -39,11 +39,11 @@ keywords: [artificial intelligence, machine learning, software engineering]
   </tr>
 </tbody></table>
 
-- Working on ArchiLabs' mission to create the first AI Architect to make all new construction faster &amp; more affordable
-- Developing across the full stack, including Revit integrations, React frontend, Supabase, and AI agents powered by LangGraph
-- Working directly with the CEO and CTO founders and the BIM specialist
-- Contributing to a fast-moving YC-backed startup focused on solving critical problems in the construction industry
-- Improving the AI capabilities to enhance construction planning and design efficiency
+- Worked on ArchiLabs' mission to create the first AI Architect to make all new construction faster &amp; more affordable
+- Developed across the full stack, including Revit integrations, React frontend, Supabase, and AI agents powered by LangGraph
+- Worked directly with the CEO and CTO founders and the BIM specialist
+- Contributed to a fast-moving YC-backed startup focused on solving critical problems in the construction industry
+- Improved the AI capabilities to enhance construction planning and design efficiency
 - **Technologies:** React, Supabase, LangGraph, LangChain, LangSmith, Revit integrations, AI agent systems
 
 <table>
@@ -191,14 +191,11 @@ keywords: [artificial intelligence, machine learning, software engineering]
   </tr>
 </tbody></table>
 
-## Coursework &amp; Certifications
+<!-- ## Coursework &amp; Certifications
 <hr>
 
 <table>
-  <tbody><tr>
-    <td>CS 8803 O17: Global Entrepreneurship (Georgia Tech)</td>
-    <td>Fall 2025</td>
-  </tr>
+  <tbody>
   <tr>
     <td>CS 7650: Natural Language Processing (Georgia Tech)</td>
     <td>Fall 2024</td>
@@ -307,4 +304,4 @@ keywords: [artificial intelligence, machine learning, software engineering]
     <td>CSCI E-160: Java for Distributed Computing (Harvard Extension School)</td>
     <td>2012</td>
   </tr>
-</tbody></table>
+</tbody></table> -->
