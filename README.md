@@ -113,7 +113,7 @@ keywords: [artificial intelligence, machine learning, software engineering]
 
 <br>
 
-<table>
+<!-- <table>
   <tbody><tr>
     <th>Software Engineer</th>
     <th>Nov. 2016 - Sep. 2018</th>
@@ -127,9 +127,9 @@ keywords: [artificial intelligence, machine learning, software engineering]
 - Engineered features for the BigCommerce storefront platform.
 - Wrote unit tests for all new and changed code, increasing code coverage.
 - While taking the lead on building out a new feature, discovered an opportunity to improve the codebase by refactoring the code into an easier-to-reason-about structure such that future additions wouldn't require as much overhead.
-- **Technologies**: Amazon Web Services (AWS), Docker, gRPC, hapi, JavaScript/TypeScript, Laravel, PHP, React, Ruby, Ruby on Rails
+- **Technologies**: Amazon Web Services (AWS), Docker, gRPC, hapi, JavaScript/TypeScript, Laravel, PHP, React, Ruby, Ruby on Rails -->
 
-<table>
+<!-- <table>
   <tbody><tr>
     <th>Software Engineer</th>
     <th>May 2014 - Oct. 2016</th>
@@ -145,9 +145,9 @@ keywords: [artificial intelligence, machine learning, software engineering]
 - Formed a POC to re-architect a centerpiece of the Portal, refactoring spaghetti code and building a more well-organized system that can easily accommodate new types of Autodesk products and services along with their associated data and functionality.
 - Taught and led other developers with patience and a desire to improve their understanding.
 - Responded to bugs, defects, and applicable business concerns with a strong sense of urgency.
-- **Technologies**: Amazon Relational Database Service (RDS), Apache Tomcat, Backbone.js, Docker, Java, Java Servlets, JavaScript/TypeScript
+- **Technologies**: Amazon Relational Database Service (RDS), Apache Tomcat, Backbone.js, Docker, Java, Java Servlets, JavaScript/TypeScript -->
 
-<table>
+<!-- <table>
   <tbody><tr>
     <th>Software Engineer</th>
     <th>Aug. 2012 - May 2014</th>
@@ -162,7 +162,7 @@ keywords: [artificial intelligence, machine learning, software engineering]
 - Converted legacy reporting components for use in the new system.
 - Rebuilt the mobile app, using the BackboneJS framework to organize the application.
 - Added barcode scanning/lighting functionality to the mobile app.
-- **Technologies**: Amazon Web Services (AWS), Apache Cordova/PhoneGap, Backbone.js, Google Web Toolkit (GWT), iOS, JasperReports, Java, JavaScript
+- **Technologies**: Amazon Web Services (AWS), Apache Cordova/PhoneGap, Backbone.js, Google Web Toolkit (GWT), iOS, JasperReports, Java, JavaScript -->
 
 ## Education
 <hr>
@@ -191,7 +191,7 @@ keywords: [artificial intelligence, machine learning, software engineering]
   </tr>
 </tbody></table>
 
-<!-- ## Coursework &amp; Certifications
+## Coursework &amp; Certifications
 <hr>
 
 <table>
@@ -300,8 +300,8 @@ keywords: [artificial intelligence, machine learning, software engineering]
     <td>Machine Learning Specialization (Coursera; S58WYDFTRMTB)</td>
     <td>Feb. 2017</td>
   </tr>
-  <tr>
+  <!-- <tr>
     <td>CSCI E-160: Java for Distributed Computing (Harvard Extension School)</td>
     <td>2012</td>
-  </tr>
-</tbody></table> -->
+  </tr> -->
+</tbody></table>
