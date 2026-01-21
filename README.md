@@ -197,6 +197,18 @@ keywords: [artificial intelligence, machine learning, software engineering]
 <table>
   <tbody>
   <tr>
+    <td>CS 6300: Software Development Process (Georgia Tech)</td>
+    <td>Spring 2026</td>
+  </tr>
+  <tr>
+    <td>Nvidia’s NeMo Agent Toolkit: Making Agents Reliable (DeepLearning.AI; <a href="https://learn.deeplearning.ai/accomplishments/02936d75-4e6a-4ab8-93f6-36ce16247036?usp=sharing">02936d75-4e6a-4ab8-93f6-36ce16247036</a>)</td>
+    <td>Jan. 2026</td>
+  </tr>
+  <tr>
+    <td>Agentic AI (DeepLearning.AI; <a href="https://learn.deeplearning.ai/certificates/9ea7da30-ed4b-4309-9813-c6ebbd447b4b">9ea7da30-ed4b-4309-9813-c6ebbd447b4b</a>)</td>
+    <td>Jan. 2026</td>
+  </tr>
+  <tr>
     <td>CS 7650: Natural Language Processing (Georgia Tech)</td>
     <td>Fall 2024</td>
   </tr>
