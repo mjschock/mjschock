@@ -197,6 +197,10 @@ keywords: [artificial intelligence, machine learning, software engineering]
 <table>
   <tbody>
   <tr>
+    <td>Timestep founder dogfood</td>
+    <td>Aug. 2026</td>
+  </tr>
+  <tr>
     <td>CS 6300: Software Development Process (Georgia Tech)</td>
     <td>Spring 2026</td>
   </tr>
