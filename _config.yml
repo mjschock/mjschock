@@ -1,0 +1,6 @@
+title: Mike Schock
+description: AI Engineer
+theme: jekyll-theme-primer
+exclude:
+  - Makefile
+  - scripts
