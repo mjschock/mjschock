@@ -1,0 +1,3 @@
+artifacts/*.pdf
+_site/
+.jekyll-cache/
