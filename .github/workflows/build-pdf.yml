@@ -1,0 +1,61 @@
+name: Build resume PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - README.md
+      - style.css
+      - scripts/build-pdf.sh
+      - .github/workflows/build-pdf.yml
+  pull_request:
+    branches: [main]
+    paths:
+      - README.md
+      - style.css
+      - scripts/build-pdf.sh
+      - .github/workflows/build-pdf.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PDF tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0 libffi-dev shared-mime-info
+          pip install weasyprint
+
+      - name: Generate resume PDF
+        run: bash scripts/build-pdf.sh
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mike-Schock-Resume
+          path: artifacts/Mike Schock - Resume.pdf
+
+      - name: Publish PDF to the site
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "artifacts/Mike Schock - Resume.pdf"
+          if git diff --cached --quiet; then
+            echo "PDF unchanged"
+            exit 0
+          fi
+          git commit -m "Regenerate resume PDF from README.md"
+          git push
