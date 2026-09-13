@@ -1,27 +1,23 @@
-name: Build resume PDF
+name: Deploy site
 
 on:
   push:
     branches: [main]
-    paths:
-      - README.md
-      - style.css
-      - scripts/build-pdf.sh
-      - .github/workflows/build-pdf.yml
   pull_request:
     branches: [main]
-    paths:
-      - README.md
-      - style.css
-      - scripts/build-pdf.sh
-      - .github/workflows/build-pdf.yml
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build-pdf:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,15 +43,29 @@ jobs:
           name: Mike-Schock-Resume
           path: artifacts/Mike Schock - Resume.pdf
 
-      - name: Publish PDF to the site
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "artifacts/Mike Schock - Resume.pdf"
-          if git diff --cached --quiet; then
-            echo "PDF unchanged"
-            exit 0
-          fi
-          git commit -m "Regenerate resume PDF from README.md"
-          git push
+      - name: Setup Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        if: github.event_name != 'pull_request'
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

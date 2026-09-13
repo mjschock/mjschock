@@ -1,26 +1,48 @@
+@page {
+    size: A4;
+    margin: 0.45in 0.55in 0.4in 0.55in;
+}
+
 html {
     font-size: 10px;
 }
 
+body {
+    line-height: 1.25;
+}
+
 h1 {
     font-size: 16px;
+    margin: 0 0 0.25em;
 }
 
 h2 {
     font-size: 14px;
+    margin: 0.7em 0 0.2em;
 }
 
 h3 {
     font-size: 12px;
+    margin: 0.4em 0 0.15em;
+}
+
+hr {
+    margin: 0.15em 0 0.35em;
+}
+
+p {
+    margin: 0.2em 0;
 }
 
 table {
     border-spacing: 0;
     width: 100%;
+    margin: 0.45em 0 0.1em;
 }
 
 th {
     font-size: 12px;
+    padding: 0;
 }
 
 td:nth-child(even), th:nth-child(even) {
@@ -29,4 +51,10 @@ td:nth-child(even), th:nth-child(even) {
 
 ul {
     text-align: justify;
+    margin: 0.15em 0 0.35em;
+    padding-left: 1.4em;
+}
+
+li {
+    margin: 0.05em 0;
 }
