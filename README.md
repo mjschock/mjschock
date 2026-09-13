@@ -12,8 +12,23 @@ keywords: [artificial intelligence, machine learning, software engineering]
 
 <table>
   <tbody><tr>
+    <th>AI Engineer</th>
+    <th>Feb. 2026 - Present</th>
+  </tr>
+  <tr>
+    <th>MBO Professional Services</th>
+    <th>Remote (Contractor)</th>
+  </tr>
+</tbody></table>
+
+- Third-party labor resource on assignment with PwC via Talent Exchange
+- Support AI engineering work across enterprise software initiatives, emphasizing pragmatic LLM/agent-enabled workflows and production-quality delivery
+- Translate ambiguous business and technical requirements into maintainable systems, prototypes, and implementation plans with stakeholders
+
+<table>
+  <tbody><tr>
     <th>Senior Software Engineer (AI/ML Specialist)</th>
-    <th>May 2025 - Present</th>
+    <th>May 2025 - May 2026</th>
   </tr>
   <tr>
     <th>Coblrshop</th>
@@ -89,9 +104,9 @@ keywords: [artificial intelligence, machine learning, software engineering]
 - Created a proof of concept (POC) for a data engineering pipeline to extract, transform, and load images and their corresponding labels from various data sources and formats into the COCO dataset format with k-fold train-validation-test splits using the FiftyOne and Albumentations libraries.
 - Constructed a POC for a data modeling pipeline to train and validate a PyTorch Faster R-CNN model with various modifications for computer vision tasks such as object detection and image segmentation from a train-validation split output by the data engineering pipeline.
 - Assembled a POC for a model deployment pipeline to deploy a model produced by the data modeling pipeline into a local docker container running TorchServe (or SageMaker) to run inference tests upon that model and to trigger the creation of a function that ran on schedule to monitor the deployed model.
-- Designed a dashboard using Amazon QuickSite to automatically generate visualizations, including emails pointing to those visualizations, that displayed the performance of the served model and assigned SageMaker GroundTruth jobs for our internal teams to help with data labeling.
+- Designed a dashboard using Amazon QuickSight to automatically generate visualizations, including emails pointing to those visualizations, that displayed the performance of the served model and assigned SageMaker GroundTruth jobs for our internal teams to help with data labeling.
 - Built a POC framework using Kedro and DVC to join the data engineering, data modeling, and model deployment pipelines, running pipeline components only when artifacts tracked by DVC changed.
-- **Technologies**: Albumentations, Amazon QuickSite, Amazon SageMaker Ground Truth, Docker, DVC, Faster R-CNN, FiftyOne, Kedro, Matplotlib, MobileNet, NumPy, pandas, Python, PyTorch, scikit-learn, TorchServe, torchvision
+- **Technologies**: Albumentations, Amazon QuickSight, Amazon SageMaker Ground Truth, Docker, DVC, Faster R-CNN, FiftyOne, Kedro, Matplotlib, MobileNet, NumPy, pandas, Python, PyTorch, scikit-learn, TorchServe, torchvision
 
 <table>
   <tbody><tr>
@@ -178,7 +193,7 @@ keywords: [artificial intelligence, machine learning, software engineering]
   </tr>
 </tbody></table>
 
-- Specialization in Artificial Intelligence
+- Completed. Specialization in Artificial Intelligence
 
 <table>
   <tbody><tr>
